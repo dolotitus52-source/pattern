@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grade Calculator</title>
+</head>
+<body>
+
+    <h2>Grade Letter Calculator</h2>
+
+    <p>Enter a score (0–100):</p>
+    <input id="scoreInput" type="number" min="0" max="100">
+
+    <button id="calcBtn">Get Letter Grade</button>
+
+    <h3>Result: <span id="result">—</span></h3>
+
+    
+    <script>
+        
+        const scoreInput = document.getElementById("scoreInput");
+        const calcBtn = document.getElementById("calcBtn");
+        const resultDisplay = document.getElementById("result");
+
+        
+        calcBtn.addEventListener("click", calculateGrade);
+
+        
+        function calculateGrade() {
+            
+            let score = Math.trunc(scoreInput.valueAsNumber);
+
+            
+            if (isNaN(score) || score < 0 || score > 100) {
+                resultDisplay.innerHTML = "Invalid score!";
+                return;
+            }
+
+            let grade = "";
+
+            
+            if (score >= 97) grade = "A+";
+            else if (score >= 93) grade = "A";
+            else if (score >= 90) grade = "A−";
+            else if (score >= 87) grade = "B+";
+            else if (score >= 83) grade = "B";
+            else if (score >= 80) grade = "B−";
+            else if (score >= 77) grade = "C+";
+            else if (score >= 73) grade = "C";
+            else if (score >= 70) grade = "C−";
+            else if (score >= 67) grade = "D+";
+            else if (score >= 63) grade = "D";
+            else if (score >= 60) grade = "D−";
+            else grade = "F";
+
+            
+            resultDisplay.innerHTML = grade;
+        }
+    </script>
+
+</body>
+</html>
+
